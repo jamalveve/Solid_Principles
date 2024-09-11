@@ -1,0 +1,160 @@
+Solid Principles
+->it is the principle to manage most of the software design problems
+->Solid  is the acronym which has 5 principles which will help to maintain the software design flexibkle,
+understandable and maintainable.
+->it is the subset of some princible by martin'
+->actuall ontroduced by 
+
+
+SOlid
+S->single responsibilty
+o->open closed principle
+L-liskovs substitute principle
+I->interfaces seggragration principle
+D->Dependecny inversion principle
+
+
+
+SINGLE RESPONSIBILTY PRINCIPLE
+###############################
+->A  class should have one reason to change.
+->Each and every class/modules should have responsibility over single part of the functionality
+and that responsibilty should be entirely encapsulated by the classs.
+->Each class and module should focus on one single task(everything in the class should  be forsingle purpose)
+->there can be many members yes but it should be single responsibilty of the class
+->by achieving this we an create a class very simple,smalller and clear
+
+
+Motivation:
+1)Maintainability->when any system becomes
+
+2)Testability->test driven development required when in large scale system,it is important in application life cyle
+
+3)flexibilty and extensibilty
+as developers,changung requirement very often during developemn=ent and after it went in production
+we can design the application as flexible so that we can add features easyly
+
+4)parallel developement->working simultaneously
+
+5)loose coupling ->all the above if we achive our application design will ensure loosely coupling
+so Loose coupling will make app very easier and safrer tio make any changes in one area
+bcz when we achive this ->each part of the app will largely indedepend on one another part of the application
+
+
+INTERFACE SEGGRERATION PRINCIPLE(ISP)
+#################################
+
+->No cients should be forced to depend on methods it does not use
+->instead of one big interface,we need to split it to many smaller and relavant interfaces so that
+client can know about the intreface that are relevant to tehem(which means)
+->instead of single interface multiple  smaller interfaces
+are preffered based on the group of methods each interface serving one part of the task
+
+->first used and  formulated by Robert martin for Xerox concept
+
+Problem:
+*********
+Xerox manufactures printer system
+it performs variety of tasks stabling,faxing along with printing.
+modification and Deployment became more complex 
+
+even the samllest chnages makes the deployment an hour
+whenever the print job or stabling job need to be prformed,it goes to the class bigjob class which has muti methods speific to 
+variety of client
+
+solution:
+*********
+bcz of this class stabling job knows about the other jobs also (each knos one another ->no use)
+so instead of big interface having multiple interface so that it willl be more clear and client are not 
+forcing to depend on the methods they dont use
+
+
+OPEN-CLOSED PRINCIPLE:(OCP)
+######################
+
+->Software entities such as classes, modules,and Functions etc should be always open for extension and
+closed for modification.
+->any new Functionality should be implemented by adding new classes, atrrbutes and methods
+instead of changing the current ones/existng one.
+->Bertrand Mayer originated
+->Rober c Martin considerd this the most important principle for OOps design
+
+
+Implementation Guidelines
+***************************
+->The simplest way to apply OCP  is to implement  the new functionalty one new derived class.
+->Allow clients to access the original class with abstract interface.
+->at any time,when there is a requirement changes are there we should not touch the existing class or
+functionalitys,it is  always suggested that we should create a new class and not touch the original class.
+
+
+why OCP?
+what if not followed?
+->during a rquirement enchancement if we dont follow
+as a developer,we end up testing the entire functionality along with the requiremts
+->QA team also end up in testing the entire flow
+->as we are not follwoing it in the new class and  adding in the existing functionlty we are breaking SRP rule
+->both rule are independent on each other
+->if lots of lines are there maintanance also risky
+
+
+LISKOVS SUBSTITUTION PRINCIPLE(LSP)
+################################
+If S is a subtype of P ,then objects of P may be replaced with object of tyoe S.
+
+means using child object we can replace the parent obj
+
+->Dervied types must be completely substitutable forbtheir base types.
+->it is particular on  more stronger subtype relation.
+
+Implementation Guidelines
+***************************
+->no new exception can be thrown by subtype
+->clients should know which specific subtype they are calling
+->new derived subtype classes should not replace the functionality od old parent class just extend
+
+
+
+DEPENDECNY INVERSION PRINCIPLE
+###############################
+->High level modules should not depend on low level modules.
+
+@High-level modules are typically those that contain the complex logic or business rules of your application.
+@Low-level modules handle the actual implementation details or specific operations like data access or communication.
+@Abstractions are interfaces or abstract classes that define a contract or a set of operations.
+
+->Both should depend on abstraction.
+
+->Abstraction should not depend on details,detals should depend on abstraction
+this means that the abstract interfaces or base classes should not be affected by changes in concrete implementations.
+
+Instead, concrete classes (details) should implement these abstractions and can be modified without affecting the high-level logic.
+
+why matters
+************
+Decoupling: High-level and low-level modules are less tightly bound to each other, making it easier to change or replace components without impacting the rest of the system.
+Flexibility: Changes in one part of the system are less likely to necessitate changes in other parts, allowing for easier maintenance and enhancement.
+Testability: It becomes easier to test high-level modules in isolation by mocking or stubbing the low-level dependencies.
+
+Intention of usage
+*******************
+
+
+->traditional application archi
+
+lowyer level design are  designed to be consumed by higher level components which enable increasingly complex
+sytems to be build
+
+in this process higher levl compoments depemd directly upon on lowyer level components to chive some task
+
+->this depency on lowyer level components  will limit the reuse opportunites of  higher levl and ends in bad design
+
+->this doesnot the first point 
+
+->presentation layer            Buisness layer         dataAccesLayer
+(button click)                 (employee save)          (save data in db)
+
+
+->here button click call the employeee save which does some validation checks before saving in the data
+
+
