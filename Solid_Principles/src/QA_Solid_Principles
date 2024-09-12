@@ -1,0 +1,84 @@
+1. Single Responsibility Principle (SRP)
+Question 1: What is the Single Responsibility Principle (SRP)?
+
+Answer: The Single Responsibility Principle states that a class should have only one reason to change, meaning it should have only one job or responsibility.
+ This helps in making the system more modular and easier to maintain.
+
+Question 2: Can you give an example of a violation of SRP?
+
+Answer: A class that handles both user data management and reporting is violating SRP. 
+For instance, a UserManager class that handles user creation, deletion, and also generates user-related reports 
+is responsible for multiple functionalities, thus violating SRP.
+
+Question 3: How would you refactor a class that violates SRP?
+
+Answer: Refactor the class into separate classes, each handling a single responsibility. 
+For instance, split UserManager into UserCreationService, UserDeletionService, and UserReportService,
+ each focusing on a single aspect of user management.
+
+2. Open/Closed Principle (OCP)
+Question 1: What is the Open/Closed Principle (OCP)?
+
+Answer: The Open/Closed Principle states that software entities (classes, modules, functions, etc.) 
+should be open for extension but closed for modification. 
+This means you should be able to extend a class's behavior without changing its existing code.
+
+Question 2: How can you design a system to adhere to OCP?
+
+Answer: Use abstraction and inheritance. For example, define an interface or an abstract class and allow concrete classes to implement or extend it. By adding new classes that implement or extend the abstract class or interface, you can extend functionality without modifying existing code.
+
+Question 3: Can you provide an example of violating OCP?
+
+Answer: Suppose you have a ReportGenerator class with a method that generates reports in various formats (PDF, Excel). Adding a new report format would require modifying the ReportGenerator class, which violates OCP.
+
+3. Liskov Substitution Principle (LSP)
+Question 1: What is the Liskov Substitution Principle (LSP)?
+
+Answer: The Liskov Substitution Principle states that objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program. In other words, subclasses should be able to stand in for their base classes.
+
+Question 2: Can you give an example of a violation of LSP?
+
+Answer: If you have a Bird class with a fly() method and a Penguin subclass that overrides fly() with an exception because penguins can’t fly, this violates LSP. A Penguin instance cannot be used wherever a Bird instance is expected without causing issues.
+
+Question 3: How would you address a violation of LSP?
+
+Answer: Refactor the class hierarchy to ensure that subclasses properly follow the contract established by their parent classes. In the example, you could use an interface or abstract class that represents Flyable and separate it from Bird, allowing only those birds that can fly to implement Flyable.
+
+4. Interface Segregation Principle (ISP)
+Question 1: What is the Interface Segregation Principle (ISP)?
+
+Answer: The Interface Segregation Principle states that clients should not be forced to depend on interfaces they do not use. Instead of having a single large interface with many methods, it's better to have several smaller, specific interfaces.
+
+Question 2: How does ISP differ from SRP?
+
+Answer: While SRP is about ensuring that a class has only one responsibility, ISP is about ensuring that an interface has only one reason to change, which usually means having multiple smaller interfaces rather than one large interface.
+
+Question 3: Can you provide an example of violating ISP?
+
+Answer: Suppose you have a Machine interface with methods print(), scan(), and fax(). A Printer class that implements this interface would be forced to implement scan() and fax() methods even if it doesn’t support them, violating ISP.
+
+5. Dependency Inversion Principle (DIP)
+Question 1: What is the Dependency Inversion Principle (DIP)?
+
+Answer: The Dependency Inversion Principle states that high-level modules should not depend on low-level modules, but both should depend on abstractions. Additionally, abstractions should not depend on details, but details should depend on abstractions.
+
+Question 2: How can you achieve DIP in your design?
+
+Answer: Use interfaces or abstract classes to create abstractions. High-level modules should interact with these abstractions rather than concrete implementations. Concrete implementations should depend on these abstractions to be injected into high-level modules.
+
+Question 3: Can you provide an example where DIP is violated?
+
+Answer: If a PaymentService class directly instantiates a CreditCardPayment class, it violates DIP because PaymentService is tightly coupled to CreditCardPayment. To adhere to DIP, PaymentService should depend on a PaymentMethod interface, and CreditCardPayment should implement this interface.
+
+
+
+General Tips for SOLID Principle Questions
+Understand the Definitions: Be clear on what each principle entails and why it is important.
+Provide Examples: When explaining principles, use concrete examples to illustrate both correct and incorrect implementations.
+Discuss Refactoring: Show how you would refactor code to adhere to each principle.
+Explain Benefits: Discuss the benefits of applying these principles, such as improved maintainability, scalability, and flexibility.
+Preparing for these questions will help you demonstrate a strong understanding of SOLID principles and their practical applications in software design.
+
+
+
+
